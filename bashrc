@@ -69,6 +69,7 @@ else
 fi
 unset color_prompt force_color_prompt
 
+# source .prompt
 . $HOME/.prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -107,6 +108,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Function definitions
 function ipadr { /sbin/ifconfig |grep -B1 "inet addr" |awk '{ if ( $1 == "inet" ) { print $2 } else if ( $2 == "Link" ) { printf "%s:" ,$1 } }' |awk -F: '{ print $1 ": " $3 }';
 echo -n "ext: "; curl http://icanhazip.com; echo; }
 #http://ipecho.net/plain
@@ -116,7 +118,6 @@ echo -n "ext: "; curl http://icanhazip.com; echo; }
 #if [ -x notify-send ]; then
   alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 #fi
-
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
